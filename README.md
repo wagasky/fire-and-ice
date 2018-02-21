@@ -26,7 +26,7 @@ Nice work! You basically have a full website. This might be a good time to start
 
 ##### Iteration 2:
 
-If you've looked at the house objects coming in, you might have noticed the `swornMembers` array. This is an array of URL endpoints to hit. You'll need to make a `POST` request to `http://localhost:3001/api/v1/character` to retrieve the desired sworn member(The `/character` endpoint will grab that data for you and respond with the house sworn house member). You will also need to send in the body a JSON string of an object `{ url: '...url' }`
+If you've looked at the house objects coming in, you might have noticed the `swornMembers` array. This is an array of URL endpoints to hit. You'll need to make a `GET` request to `http://localhost:3001/api/v1/character/:id` to retrieve the desired sworn member (The `/character/:id` endpoint will grab that data for you and respond with the house sworn house member). You will also need to send the id of the sworn member in place of :id.
 
 This data should not be displayed until the user clicks on the card.
 You can solve this any way you'd like. If you decided to use router you might want to consider creating a dynamic route to render each sworn member.
