@@ -1,7 +1,7 @@
 // fetch call here
 const getHouses = async () => {
   try {
-    const url = 'https://www.anapioficeandfire.com/api/houses'
+    const url = 'http://localhost:3001/api/v1/houses'
     const initialFetch = await fetch(url);
     const fetchedObj = await initialFetch.json();
     const cleanObj = await cleanHouseData(fetchedObj);

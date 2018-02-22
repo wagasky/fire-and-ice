@@ -18,7 +18,11 @@ describe('apiCalls', () => {
 
       getHouses();
 
-      expect(window.fetch).toHaveBeenCalled();
+      expect(window.fetch).toHaveBeenCalled(url);
+    })
+
+    it('should return the houses if the status is okay', () => {
+      const response = getHouses()
     })
   })
 })
