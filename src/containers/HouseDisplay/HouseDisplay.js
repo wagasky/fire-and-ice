@@ -16,7 +16,7 @@ export class HouseDisplay extends Component {
 
   render() {
     return (
-      <div className='HouseDisplay'>
+      <div className='Container'>
         <p>I'm the HouseDisplay</p>
       </div>
     );
