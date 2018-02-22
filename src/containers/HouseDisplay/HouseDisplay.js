@@ -10,7 +10,6 @@ export class HouseDisplay extends Component {
   async componentDidMount() {
    
     const houses = await getHouses();
-    // debugger
     await this.props.loadHouses(houses);
 
   }
