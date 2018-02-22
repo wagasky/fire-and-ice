@@ -23,5 +23,6 @@
     "test": "react-scripts test --env=jsdom",
     "lint": "./node_modules/.bin/eslint ./",
     "eject": "react-scripts eject"
-  }
+  },
+  "proxy": "http://localhost:3001/"
 }
