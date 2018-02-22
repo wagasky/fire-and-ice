@@ -10,7 +10,7 @@ describe('all actions', () => {
       type: 'LOAD_HOUSES',
       houses
     }
-    expect(actions.LOAD_HOUSES(houses)).toEqual(expected);
+    expect(actions.loadHouses(houses)).toEqual(expected);
   })
 
 })
