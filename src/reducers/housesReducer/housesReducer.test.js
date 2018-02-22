@@ -13,7 +13,7 @@ describe('housesReducer', () => {
 
   it('should return the state with an array of houses', () => {
     const expected = mockData;
-    
-    expects(housesReducer(undefined, actions.loadHouses(mockData)).toEqual(expected))
+
+    expect(housesReducer(undefined, actions.loadHouses(mockData))).toEqual(expected)
   })
 })
