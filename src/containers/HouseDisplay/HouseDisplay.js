@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fakeAction } from '../../actions';
 import PropTypes, { string } from 'prop-types';
-import { getHouses } from '../../helper/apiCalls'
+import { getHouses } from '../../helper/apiCalls';
+import { loadHouses } from '../../actions/index'
 
 export class HouseDisplay extends Component {
 
   async componentDidMount() {
    
     const houses = await getHouses();
-    await console.log(houses)
+    // debugger
+    await this.props.loadHouses();
+
   }
 
   render() {
@@ -25,8 +28,13 @@ HouseDisplay.propTypes = {
 // add propTypes
 };
 
-const mapStateToProps = ({ fake }) => ({ fake });
-const mapDispatchToProps = dispatch => ({ fakeAction:
-  () => dispatch(fakeAction())
+const mapStateToProps = (store) => ({ 
+  houses: store.houses
 });
+
+const mapDispatchToProps = (dispatch) => ({ 
+  loadHouses: (houses) => dispatch(loadHouses(houses))
+});
+
 export default connect(mapStateToProps, mapDispatchToProps)(HouseDisplay);
+
