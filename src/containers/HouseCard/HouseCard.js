@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes, { string } from 'prop-types';
-// import wolf from '../../../public/wolf.gif'
 
 export class HouseCard extends Component {
 
@@ -28,14 +27,9 @@ export class HouseCard extends Component {
   }
 }
 
-
 const mapStateToProps = (store) => ({
   houses: store.houses
 })
-
-// const mapDispatchToProps = (dispatch) => ({
-// not sure that I'm going to need dispatch at all
-// })
 
 export default connect(mapStateToProps, null)(HouseCard)
 
