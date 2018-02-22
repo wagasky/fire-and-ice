@@ -1,7 +1,7 @@
 // fetch call here
 const getHouses = async () => {
   try {
-    const url = 'https://www.anapioficeandfire.com/api/houses'
+    const url = 'http://localhost:3001/api/v1/houses'
     const initialFetch = await fetch(url);
     const fetchedObj = await initialFetch.json();
     const cleanObj = await cleanHouseData(fetchedObj);
@@ -19,7 +19,8 @@ const getHouses = async () => {
 const cleanHouseData = async (fetchedObj) => {
   const cleanedHouses = await fetchedObj.map( async (house) => {
 
-    const swornMembers = await getSwornMembers(house);
+    const swornMembers = await getSwornMembers(house); 
+
     // refactor me later if there is time
 
     const seats = house.seats.toString() === "" ? 'N/A' : [...house.seats.join(', ')];
@@ -37,23 +38,31 @@ const cleanHouseData = async (fetchedObj) => {
       founded: house.founded ? house.founded : 'N/A'
     }
   })
- return cleanedHouses
+ return Promise.all(cleanedHouses)
 }
 
 const getSwornMembers = async (house) => {
-  try {
-    const houseArray = house.swornMembers
-    const members = await houseArray.map( async (url) => {
-      let memberObject = await fetch(url)
-      return memberObject
-    })
-    
-    const resolvedMembers = Promise.all(members);
-    debugger
-  } catch(err) {
-    throw new Error('getSwornMembers failed to fetch')
-  }
-  
-}
+
+    const swornMembers = house.swornMembers
+    const membersObject = await swornMembers.map( async member => {
+    const memberFetch = await fetch(member, {
+      method: 'GET'
+      });
+      return await memberFetch.json();
+    });
+    const resolvedMembers = await Promise.all(membersObject);
+
+    return cleanSwornMembers(resolvedMembers);
+
+};
+
+const cleanSwornMembers = swornMembers => {
+  const memberNames = swornMembers.map( member => {
+    return member.name;
+  } );
+
+  return memberNames.join(', ');
+};
+
 
 export { getHouses }
