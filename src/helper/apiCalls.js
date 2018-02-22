@@ -18,15 +18,22 @@ const getHouses = async () => {
 
 const cleanHouseData = async (fetchedObj) => {
   const cleanedHouses = await fetchedObj.map( (house) => {
+
+    // refactor me later if there is time
+
+    const seats = house.seats.toString() === "" ? 'N/A' : [...house.seats.join(', ')];
+    const weapons = house.ancestralWeapons.toString() === "" ? 'N/A' : [...house.ancestralWeapons.join(', ')];
+    const titles = house.titles.toString() === "" ? 'N/A' : [...house.titles.join(', ')];
+
     return {
-      house: house.name,
-      seats: house.seats,
-      titles: house.titles,
-      ancestralWeapons: house.ancestralWeapons,
-      coatOfArms: house.coatOfArms,
-      swornMembers: house.swornMembers,
-      words: house.words, 
-      founded: house.founded
+      house: house.name ? house.name : 'N/A',
+      seats: seats,
+      titles: titles,
+      ancestralWeapons: weapons,
+      coatOfArms: house.coatOfArms ? house.coatOfArms : 'N/A',
+      swornMembers: house.swornMembers ? house.swornMembers : 'N/A',
+      words: house.words ? house.words : 'N/A', 
+      founded: house.founded ? house.founded : 'N/A'
 
     }
   })

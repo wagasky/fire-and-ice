@@ -4,8 +4,6 @@ import PropTypes, { string } from 'prop-types';
 
 export class HouseCard extends Component {
 
-
-
   render() {
     const renderedHouses = this.props.houses.map( house => {
       return (
@@ -28,7 +26,6 @@ export class HouseCard extends Component {
   }
 }
 
-// name, founded, seats, titles, coatOfArms, ancestralWeapons, words
 
 const mapStateToProps = (store) => ({
   houses: store.houses
