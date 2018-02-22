@@ -9,7 +9,7 @@ export class HouseDisplay extends Component {
   async componentDidMount() {
    
     const houses = await getHouses();
-     debugger
+    await console.log(houses)
   }
 
   render() {
