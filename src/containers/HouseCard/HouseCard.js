@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes, { string } from 'prop-types';
+// import wolf from '../../../public/wolf.gif'
 
 export class HouseCard extends Component {
 
@@ -18,8 +19,9 @@ export class HouseCard extends Component {
         </div>
       )
     })
+
     return (
-      <div>
+      <div className='Container'>
         { renderedHouses }
       </div>
     )
@@ -36,3 +38,4 @@ const mapStateToProps = (store) => ({
 // })
 
 export default connect(mapStateToProps, null)(HouseCard)
+
