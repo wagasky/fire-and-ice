@@ -32,7 +32,4 @@ const cleanHouseData = async (fetchedObj) => {
  return cleanedHouses
 }
 
-
-// data formatting helper function here
-
 export { getHouses }
