@@ -17,19 +17,43 @@ const getHouses = async () => {
 }
 
 const cleanHouseData = async (fetchedObj) => {
-  const cleanedHouses = await fetchedObj.map( (house) => {
-    return {
-      house: house.name,
-      seats: house.seats,
-      titles: house.titles,
-      ancestralWeapons: house.ancestralWeapons,
-      coatOfArms: house.coatOfArms,
-      swornMembers: house.swornMembers,
-      words: house.words
+  const cleanedHouses = await fetchedObj.map( async (house) => {
 
+    const swornMembers = await getSwornMembers(house);
+    // refactor me later if there is time
+
+    const seats = house.seats.toString() === "" ? 'N/A' : [...house.seats.join(', ')];
+    const weapons = house.ancestralWeapons.toString() === "" ? 'N/A' : [...house.ancestralWeapons.join(', ')];
+    const titles = house.titles.toString() === "" ? 'N/A' : [...house.titles.join(', ')];
+
+    return {
+      house: house.name ? house.name : 'N/A',
+      seats: seats,
+      titles: titles,
+      ancestralWeapons: weapons,
+      coatOfArms: house.coatOfArms ? house.coatOfArms : 'N/A',
+      swornMembers: swornMembers,
+      words: house.words ? house.words : 'N/A', 
+      founded: house.founded ? house.founded : 'N/A'
     }
   })
  return cleanedHouses
+}
+
+const getSwornMembers = async (house) => {
+  try {
+    const houseArray = house.swornMembers
+    const members = await houseArray.map( async (url) => {
+      let memberObject = await fetch(url)
+      return memberObject
+    })
+    
+    const resolvedMembers = Promise.all(members);
+    debugger
+  } catch(err) {
+    throw new Error('getSwornMembers failed to fetch')
+  }
+  
 }
 
 export { getHouses }

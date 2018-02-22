@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fakeAction } from '../../actions';
 import PropTypes, { string } from 'prop-types';
 import { getHouses } from '../../helper/apiCalls';
-import { loadHouses } from '../../actions/index'
+import { loadHouses } from '../../actions/index';
+import HouseCard from '../HouseCard/HouseCard'
 
 export class HouseDisplay extends Component {
 
@@ -16,8 +16,14 @@ export class HouseDisplay extends Component {
 
   render() {
     return (
-      <div className='HouseDisplay'>
-        <p>I'm the HouseDisplay</p>
+      <div className="Display-info">
+        { (!this.props.houses) &&
+          <img src='../../wolf.gif' id='wolf'/>
+        }
+
+        { (this.props.houses) &&
+          <HouseCard />
+        }
       </div>
     );
   }
