@@ -15,6 +15,7 @@ export class HouseCard extends Component {
           <p>Coat Of Arms: {house.coatOfArms}</p>
           <p>Ancestral Weapons: {house.ancestralWeapons}</p>
           <p>Words: {house.words}</p>
+          <p>Sworn Members: {house.swornMembers} </p>
         </div>
       )
     })

@@ -43,7 +43,6 @@ const cleanHouseData = async (fetchedObj) => {
 
 const getSwornMembers = async (house) => {
 
-  // try {
     const swornMembers = house.swornMembers
     const membersObject = await swornMembers.map( async member => {
     const memberFetch = await fetch(member, {
@@ -54,10 +53,6 @@ const getSwornMembers = async (house) => {
     const resolvedMembers = await Promise.all(membersObject);
 
     return cleanSwornMembers(resolvedMembers);
-
-  // } catch (err) {
-  //   throw new Error('Error in getSwornMembers failed to fetch')
-  // }
 
 };
 
