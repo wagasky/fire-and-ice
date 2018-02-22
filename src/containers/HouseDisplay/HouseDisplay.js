@@ -11,7 +11,7 @@ export class HouseDisplay extends Component {
    
     const houses = await getHouses();
     // debugger
-    await this.props.loadHouses();
+    await this.props.loadHouses(houses);
 
   }
 
