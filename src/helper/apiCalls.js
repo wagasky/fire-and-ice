@@ -25,7 +25,8 @@ const cleanHouseData = async (fetchedObj) => {
       ancestralWeapons: house.ancestralWeapons,
       coatOfArms: house.coatOfArms,
       swornMembers: house.swornMembers,
-      words: house.words
+      words: house.words, 
+      founded: house.founded
 
     }
   })

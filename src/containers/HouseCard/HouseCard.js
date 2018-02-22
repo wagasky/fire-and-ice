@@ -10,6 +10,13 @@ export class HouseCard extends Component {
     const renderedHouses = this.props.houses.map( house => {
       return (
         <div className='Card'>
+          <h1>{house.house}</h1>
+          <h3>Founded: {house.founded}</h3>
+          <p>Seats: {house.seats}</p>
+          <p>Titles: {house.titles}</p>
+          <p>Coat Of Arms: {house.coatOfArms}</p>
+          <p>Ancestral Weapons: {house.ancestralWeapons}</p>
+          <p>Words: {house.words}</p>
         </div>
       )
     })
@@ -20,6 +27,8 @@ export class HouseCard extends Component {
     )
   }
 }
+
+// name, founded, seats, titles, coatOfArms, ancestralWeapons, words
 
 const mapStateToProps = (store) => ({
   houses: store.houses
