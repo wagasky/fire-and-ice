@@ -26,7 +26,6 @@ App.propTypes = {
   fakeAction: func.isRequired
 };
 
-
 export default App;
 
 

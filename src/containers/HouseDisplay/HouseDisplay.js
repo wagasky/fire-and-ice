@@ -17,23 +17,17 @@ export class HouseDisplay extends Component {
   render() {
     return (
       <div className="Display-info">
-       <img src="../../wolf.gif" id="wolf"/>
+        { (this.props.houses.length === 0) &&
+          <img src='../../wolf.gif' id='wolf'/>
+        }
+
+        { (this.props.houses.length > 0) &&
+          <HouseCard />
+        }
       </div>
     );
   }
 }
-
-// save for display
-
-
-        // { (this.props.houses.length === 0) &&
-        //   <img src='../../../public/wolf.gif' id='wolf'/>
-        // }
-
-        // { (this.props.houses.length > 0) &&
-        //   <HouseCard />
-        // }
-      
 
 HouseDisplay.propTypes = {
 // add propTypes
