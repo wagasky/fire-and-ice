@@ -7,7 +7,7 @@ const getHouses = async () => {
 
     if (initialFetch.status <= 200) {
       return fetchedObj
-      debugger
+      console.log(fetchedObj)
     } else {
       throw new Error('Bad status')
     }

@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fakeAction } from '../../actions';
 import PropTypes, { string } from 'prop-types';
-import { getHouses } from '../../helper/apiCalls.js'
-
+import { getHouses } from '../../helper/apiCalls'
 
 export class HouseDisplay extends Component {
 
   async componentDidMount() {
-    await getHouses();
+   
+    const houses = await getHouses();
+     debugger
   }
 
   render() {
