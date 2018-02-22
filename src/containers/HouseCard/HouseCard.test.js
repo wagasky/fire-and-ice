@@ -13,11 +13,13 @@ describe('HouseCard', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  // it('should map to the store correctly', () => {
+  it('should map to the store correctly', () => {
+    const mockStore = ['house', 'house']
 
-  // });
+    const mapped = mapStateToProps(mockStore);
 
-  // it('should call the dispatch function when using a function to mapDispatchToProps', () => {
+    expect(mapped).toEqual(mockStore);
 
-  // });
+  });
+
 })
