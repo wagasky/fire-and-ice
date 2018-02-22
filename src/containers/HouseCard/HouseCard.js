@@ -5,10 +5,17 @@ import PropTypes, { string } from 'prop-types';
 export class HouseCard extends Component {
 
 
+
   render() {
+    const renderedHouses = this.props.houses.map( house => {
+      return (
+        <div className='Card'>
+        </div>
+      )
+    })
     return (
-      <div className='Card'>
-        <p>I'm a house</p>
+      <div>
+        { renderedHouses }
       </div>
     )
   }
