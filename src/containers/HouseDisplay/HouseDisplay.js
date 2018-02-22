@@ -17,11 +17,11 @@ export class HouseDisplay extends Component {
   render() {
     return (
       <div className="Display-info">
-        { (this.props.houses.length === 0) &&
+        { (!this.props.houses) &&
           <img src='../../wolf.gif' id='wolf'/>
         }
 
-        { (this.props.houses.length > 0) &&
+        { (this.props.houses) &&
           <HouseCard />
         }
       </div>
