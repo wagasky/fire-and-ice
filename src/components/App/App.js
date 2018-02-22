@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
 import { fakeAction } from '../../actions';
+import HouseDisplay from '../../containers/HouseDisplay/HouseDisplay'
 class App extends Component {
 
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
           }}> FAKE ACTION</button>
         </div>
         <div className='Display-info'>
+          <HouseDisplay />
         </div>
       </div>
     );
