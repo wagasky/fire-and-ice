@@ -19,8 +19,7 @@ const getHouses = async () => {
 const cleanHouseData = async (fetchedObj) => {
   const cleanedHouses = await fetchedObj.map( async (house) => {
 
-    const swornMembers = await getSwornMembers(house);
-  
+    const swornMembers = await getSwornMembers(house); 
 
     // refactor me later if there is time
 
@@ -39,25 +38,36 @@ const cleanHouseData = async (fetchedObj) => {
       founded: house.founded ? house.founded : 'N/A'
     }
   })
- return cleanedHouses
+ return Promise.all(cleanedHouses)
 }
 
 const getSwornMembers = async (house) => {
-  const members = house.swornMembers
-  debugger
-  try {
-    const memberData = await members.map( async (url) => {
-      let memberObject = await fetch('/api/v1/character/:id', {
-        method: 'GET'
-      });
 
-      return memberObject.json()
-     
-    })
-   return Promise.all(memberData)
-  } catch (err) {
-    throw new Error('Error in getSwornMembers fetch')
-  }
-}
+  // try {
+    const swornMembers = house.swornMembers
+    const membersObject = await swornMembers.map( async member => {
+    const memberFetch = await fetch(member, {
+      method: 'GET'
+      });
+      return await memberFetch.json();
+    });
+    const resolvedMembers = await Promise.all(membersObject);
+
+    return cleanSwornMembers(resolvedMembers);
+
+  // } catch (err) {
+  //   throw new Error('Error in getSwornMembers failed to fetch')
+  // }
+
+};
+
+const cleanSwornMembers = swornMembers => {
+  const memberNames = swornMembers.map( member => {
+    return member.name;
+  } );
+
+  return memberNames.join(', ');
+};
+
 
 export { getHouses }
