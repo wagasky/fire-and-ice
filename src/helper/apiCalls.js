@@ -41,19 +41,21 @@ const cleanHouseData = async (fetchedObj) => {
 }
 
 const getSwornMembers = async (house) => {
+  
   try {
-    const houseArray = house.swornMembers
-    const members = await houseArray.map( async (url) => {
-      let memberObject = await fetch(url)
-      return memberObject
+    const members = await house.map( async (house) => {
+      const url = house.url
+      let memberObject = await fetch(url, {
+        method: 'GET'
+      });
+      return await memberObject.json();
     })
-    
-    const resolvedMembers = Promise.all(members);
+    const resolvedMembers = await Promise.all(members)
     debugger
+    return resolvedMembers
   } catch(err) {
     throw new Error('getSwornMembers failed to fetch')
   }
-  
 }
 
 export { getHouses }
